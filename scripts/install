@@ -107,6 +107,16 @@ ynh_script_progression --message="Set permissions on ${final_path}"
 chown -R ${app}: ${final_path}
 
 #=================================================
+# FIX https://github.com/ashemsay/restic_ynh/issues/17
+#=================================================
+for log in restic_backup_${app}.log restic_backup_${app}.err restic_check_${app}.log restic_check_${app}.err;do
+  if [ -d "/var/log/${log}" ];then
+    rmdir /var/log/${log}
+  fi
+  touch /var/log/${log}
+  chown ${app}: /var/log/${log}
+done
+#=================================================
 # SETUP LOGROTATE
 #=================================================
 ynh_script_progression --message="Configuring logrotate"
