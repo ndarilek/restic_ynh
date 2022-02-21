@@ -154,9 +154,9 @@ systemctl start ${app}_check_read_data.timer
 #=================================================
 ynh_script_progression --message="Configuring logrotate"
 ynh_use_logrotate --logfile=/var/log/restic_backup_${app}.log
-ynh_use_logrotate --logfile=/var/log/restic_backup_${app}.err
+ynh_use_logrotate --logfile=/var/log/restic_backup_${app}.err.log
 ynh_use_logrotate --logfile=/var/log/restic_check_${app}.log
-ynh_use_logrotate --logfile=/var/log/restic_check_${app}.err
+ynh_use_logrotate --logfile=/var/log/restic_check_${app}.err.log
 
 #=================================================
 # UPGRADE SSH CONFIG
